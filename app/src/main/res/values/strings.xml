@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Scheduling Application</string>
+    <string name="terms_button">List of Terms</string>
+    <string name="courses_button">List of Courses</string>
+    <string name="assessments_button">List of Assessments</string>
+
 </resources>

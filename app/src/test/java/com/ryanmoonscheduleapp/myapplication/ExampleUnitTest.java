@@ -1,4 +1,4 @@
-package com.ryanscheduleapp.myapplication;
+package com.ryanmoonscheduleapp.myapplication;
 
 import org.junit.Test;
 
