@@ -1,9 +1,11 @@
-package com.ryanmoonscheduleapp.myapplication;
+package com.ryanmoonscheduleapp.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.ryanmoonscheduleapp.myapplication.R;
 
 public class ListOfTerms extends AppCompatActivity {
 

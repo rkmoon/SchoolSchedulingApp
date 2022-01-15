@@ -1,16 +1,18 @@
-package com.ryanmoonscheduleapp.myapplication;
+package com.ryanmoonscheduleapp.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class ListOfCourses extends AppCompatActivity {
+import com.ryanmoonscheduleapp.myapplication.R;
+
+public class ListOfAssessments extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_courses);
+        setContentView(R.layout.activity_list_of_assessments);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }

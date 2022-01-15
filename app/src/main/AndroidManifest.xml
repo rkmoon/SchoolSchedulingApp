@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchedulingApplication">
         <activity
-            android:name=".ListOfAssessments"
+            android:name=".UI.ListOfAssessments"
             android:exported="false" />
         <activity
-            android:name=".ListOfCourses"
+            android:name=".UI.ListOfCourses"
             android:exported="false" />
         <activity
-            android:name=".ListOfTerms"
+            android:name=".UI.ListOfTerms"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
