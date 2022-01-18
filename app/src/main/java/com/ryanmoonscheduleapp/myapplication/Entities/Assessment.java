@@ -1,11 +1,15 @@
 package com.ryanmoonscheduleapp.myapplication.Entities;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
 @Entity(tableName = "assessments")
 public class Assessment {
+
+    @PrimaryKey(autoGenerate = true)
+    private int assessmentID;
     private String title;
     private Date startDate;
     private Date endDate;
@@ -14,6 +18,13 @@ public class Assessment {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public void setAssessmentID(int assessmentID) {
+        this.assessmentID = assessmentID;
+    }
+    public int getAssessmentID() {
+        return assessmentID;
     }
 
     public String getTitle() {

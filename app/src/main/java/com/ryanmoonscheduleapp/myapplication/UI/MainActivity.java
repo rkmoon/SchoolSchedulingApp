@@ -6,7 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ryanmoonscheduleapp.myapplication.Entities.Course;
 import com.ryanmoonscheduleapp.myapplication.R;
+import com.ryanmoonscheduleapp.myapplication.database.Repository;
+
+import java.sql.Date;
+import java.time.Instant;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Repository repo = new Repository(getApplication());
+        Course course = new Course("History", Date.from(Instant.now()), Date.from(Instant.now()), Course.Status.INPROGRESS, "big booty judy", "666", "ass");
+        repo.insert(course);
 
     }
 

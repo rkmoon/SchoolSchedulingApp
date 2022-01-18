@@ -1,6 +1,7 @@
 package com.ryanmoonscheduleapp.myapplication.Entities;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
@@ -13,6 +14,9 @@ public class Course {
         PLANTOTAKE
     }
 
+
+    @PrimaryKey(autoGenerate = true)
+    private int courseID;
     private String title;
     private Date startDate;
     private Date endDate;
@@ -29,6 +33,14 @@ public class Course {
         this.instructorName = instructorName;
         this.instructorPhoneNumber = instructorPhoneNumber;
         this.instructorEmail = instructorEmail;
+    }
+
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
+    public int getCourseID() {
+        return courseID;
     }
 
     public String getTitle() {
