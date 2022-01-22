@@ -3,5 +3,7 @@
     <string name="terms_button">List of Terms</string>
     <string name="courses_button">List of Courses</string>
     <string name="assessments_button">List of Assessments</string>
+    <string name="no_terms">No Terms</string>
+    <string name="no_courses">No Courses</string>
 
 </resources>

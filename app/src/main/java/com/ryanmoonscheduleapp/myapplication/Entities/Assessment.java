@@ -1,15 +1,18 @@
 package com.ryanmoonscheduleapp.myapplication.Entities;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "assessments")
+@Entity(tableName = "assessments")/*, foreignKeys = {@ForeignKey(entity = Course.class,
+        parentColumns = "courseID", childColumns = "courseID", onDelete = ForeignKey.CASCADE)})*/
 public class Assessment {
 
     @PrimaryKey(autoGenerate = true)
     private int assessmentID;
+    private int courseID;
     private String title;
     private Date startDate;
     private Date endDate;
@@ -49,5 +52,13 @@ public class Assessment {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 }

@@ -35,7 +35,6 @@ public class Repository {
         databaseExecutor.execute(() -> {
             mAllAssessments = mAssessmentDAO.getAllAssessments();
         });
-
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
