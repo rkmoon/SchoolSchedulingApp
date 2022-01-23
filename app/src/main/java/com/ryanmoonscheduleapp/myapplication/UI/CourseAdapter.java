@@ -34,10 +34,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
         private CourseViewHolder(View itemView){
             super(itemView);
-            title = itemView.findViewById(R.id.courseTextView);
+            title = itemView.findViewById(R.id.courseTitle);
             startDate = itemView.findViewById(R.id.courseStart);
             endDate = itemView.findViewById(R.id.courseEnd);
-            status = itemView.findViewById(R.id.courseStatus);
+            status = itemView.findViewById(R.id.assessmentType);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

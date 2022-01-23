@@ -17,7 +17,7 @@ import com.ryanmoonscheduleapp.myapplication.Entities.Course;
 import com.ryanmoonscheduleapp.myapplication.Entities.Term;
 import com.ryanmoonscheduleapp.myapplication.Utilities.Converters;
 
-@Database(entities = {Assessment.class, Course.class, Term.class}, version=8, exportSchema = false)
+@Database(entities = {Assessment.class, Course.class, Term.class}, version=10, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class DatabaseBuilder extends RoomDatabase {
     public abstract AssessmentDAO assessmentDAO();

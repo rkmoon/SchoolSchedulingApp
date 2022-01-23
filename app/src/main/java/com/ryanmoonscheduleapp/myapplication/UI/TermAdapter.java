@@ -32,7 +32,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
 
         private TermViewHolder(View itemView) {
             super(itemView);
-            termTitle = itemView.findViewById(R.id.termTextView);
+            termTitle = itemView.findViewById(R.id.termTitle);
             startDate = itemView.findViewById(R.id.termStart);
             endDate = itemView.findViewById(R.id.termEnd);
             itemView.setOnClickListener(new View.OnClickListener() {

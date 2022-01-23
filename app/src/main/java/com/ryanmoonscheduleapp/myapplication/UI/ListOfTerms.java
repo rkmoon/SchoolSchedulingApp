@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.ryanmoonscheduleapp.myapplication.Entities.Term;
 import com.ryanmoonscheduleapp.myapplication.R;
 import com.ryanmoonscheduleapp.myapplication.database.Repository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +26,7 @@ public class ListOfTerms extends AppCompatActivity {
         setContentView(R.layout.activity_list_of_terms);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.terms);
         repository=new Repository(getApplication());
         List<Term> allTerms = repository.getAllTerms();
         RecyclerView recyclerView = findViewById(R.id.recyclerviewTerms);
@@ -36,8 +41,21 @@ public class ListOfTerms extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
+
+
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_list_of_terms, menu);
+        return true;
+    }
+
+    public void enterCoursesList(View view){
+        Intent intent = new Intent(ListOfTerms.this, ListOfCourses.class);
+        startActivity(intent);
     }
 
 
