@@ -48,7 +48,7 @@ public class ListOfCourses extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.editTerm:
-                Intent intent = new Intent(this, CourseDetail.class);
+                Intent intent = new Intent(this, TermDetail.class);
                 intent.putExtra("termID", getIntent().getIntExtra("termID", 0));
                 this.startActivity(intent);
         }
