@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         testTerm = new Term("Term 1", Date.from(Instant.now()), java.util.Date.from(Instant.now()));;
         testCourse = new Course("History", Date.from(Instant.now()), Date.from(Instant.now()),
                 Course.Status.INPROGRESS, "big booty judy", "666",
-                "ass", 1);
+                "ass", 1, "none");
 
     }
 

@@ -28,8 +28,9 @@ public class Course {
     private String instructorName;
     private String instructorPhoneNumber;
     private String instructorEmail;
+    private String notes;
 
-    public Course(String title, Date startDate, Date endDate, Status status, String instructorName, String instructorPhoneNumber, String instructorEmail, int termID) {
+    public Course(String title, Date startDate, Date endDate, Status status, String instructorName, String instructorPhoneNumber, String instructorEmail, int termID, String notes) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -38,6 +39,7 @@ public class Course {
         this.instructorPhoneNumber = instructorPhoneNumber;
         this.instructorEmail = instructorEmail;
         this.termID = termID;
+        this.notes = notes;
     }
 
 
@@ -113,9 +115,18 @@ public class Course {
         this.instructorEmail = instructorEmail;
     }
 
-    public String statusToString(){
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String statusToString() {
         String stringStatus = null;
-        switch (this.status){
+        switch (this.status) {
             case DROPPED:
                 stringStatus = "Dropped";
                 break;

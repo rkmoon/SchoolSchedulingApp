@@ -28,6 +28,17 @@ public class ListOfTerms extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(R.string.terms);
         repository=new Repository(getApplication());
+        populateTerms();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populateTerms();
+    }
+
+    private void populateTerms(){
         List<Term> allTerms = repository.getAllTerms();
         RecyclerView recyclerView = findViewById(R.id.recyclerviewTerms);
         final TermAdapter termAdapter = new TermAdapter(this);
@@ -55,6 +66,12 @@ public class ListOfTerms extends AppCompatActivity {
 
     public void enterCoursesList(View view){
         Intent intent = new Intent(ListOfTerms.this, ListOfCourses.class);
+        startActivity(intent);
+    }
+
+    public void createTerm(View view){
+        Intent intent = new Intent(ListOfTerms.this, TermDetail.class);
+        intent.putExtra("isEdit", false);
         startActivity(intent);
     }
 

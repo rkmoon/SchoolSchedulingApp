@@ -20,6 +20,7 @@ public class Repository {
     private List<Assessment> mAllAssessments;
     private List<Course> mAllCourses;
     private List<Term> mAllTerms;
+    private List<Course> coursesInTerm;
     private Term mTerm;
 
     private static int NUMBER_OF_THREADS = 4;
@@ -121,6 +122,18 @@ public class Repository {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Course> getCoursesInTerm(int termID){
+        databaseExecutor.execute(() ->{
+            coursesInTerm = mCourseDAO.getCoursesInTerm(termID);
+        });
+        try{
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return coursesInTerm;
     }
 
     public List<Term> getAllTerms() {

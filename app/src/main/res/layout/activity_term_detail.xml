@@ -40,20 +40,19 @@
         android:text="@string/start_date"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/termStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:editable="false"
         android:ems="10"
         android:hint="@string/term_start_date"
         android:inputType="date"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="@+id/termDetailTitle"
-        app:layout_constraintStart_toStartOf="@+id/termDetailTitle"
         app:layout_constraintTop_toTopOf="@+id/textView3"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -65,11 +64,10 @@
         android:text="@string/end_date"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/termEndDate"
+        android:id="@+id/courseEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -78,8 +76,17 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/termStartDate"
-        app:layout_constraintStart_toStartOf="@+id/termStartDate"
         app:layout_constraintTop_toTopOf="@+id/textView4"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/saveTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:onClick="saveTerm"
+        android:text="@string/save_term"
+        app:layout_constraintEnd_toEndOf="@+id/courseEndDate"
+        app:layout_constraintTop_toBottomOf="@+id/courseEndDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
