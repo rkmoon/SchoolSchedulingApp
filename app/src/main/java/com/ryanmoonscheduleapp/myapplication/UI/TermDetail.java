@@ -74,7 +74,7 @@ public class TermDetail extends AppCompatActivity {
     }
 
     private void setInitialInformation() {
-        Objects.requireNonNull(getSupportActionBar()).setTitle(termToEdit.getTitle());
+        getSupportActionBar().setTitle(termToEdit.getTitle());
 
         termTitle.setText(termToEdit.getTitle());
         startDate.setTime(termToEdit.getStartDate());

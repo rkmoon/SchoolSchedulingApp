@@ -4,16 +4,29 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity(tableName = "courses")/*, foreignKeys = {@ForeignKey(entity = Term.class,
         parentColumns = "termID", childColumns = "termID", onDelete = ForeignKey.CASCADE)})*/
 public class Course {
     public enum Status {
-        INPROGRESS,
-        COMPLETED,
-        DROPPED,
-        PLANTOTAKE
+        PLANTOTAKE("Plan to Take"),
+        INPROGRESS("In Progress"),
+        COMPLETED("Completed"),
+        DROPPED("Dropped");
+
+        String courseStatus;
+
+        Status(String courseStatus){
+            this.courseStatus = courseStatus;
+        }
+
+        @Override
+        public String toString(){
+            return courseStatus;
+        }
     }
 
 

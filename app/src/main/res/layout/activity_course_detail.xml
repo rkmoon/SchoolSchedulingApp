@@ -6,170 +6,247 @@
     android:layout_height="match_parent"
     tools:context=".UI.CourseDetail">
 
-    <EditText
-        android:id="@+id/courseInstName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/course_end_date"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/courseInstNameTextView"
-        app:layout_constraintEnd_toEndOf="@+id/courseInstName"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/courseInstName"
-        app:layout_constraintTop_toTopOf="@+id/courseInstNameTextView"
-        app:layout_constraintVertical_bias="0.541"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <EditText
-        android:id="@+id/courseInstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:ems="10"
-        android:hint="@string/course_end_date"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/courseInstPhoneTextView"
-        app:layout_constraintStart_toEndOf="@+id/courseInstPhoneTextView"
-        app:layout_constraintTop_toTopOf="@+id/courseInstPhoneTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/courseInstNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Name:"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/courseInstPhoneTextView"
-        app:layout_constraintStart_toStartOf="@+id/courseInstPhoneTextView"
-        app:layout_constraintTop_toBottomOf="@+id/instInfoTextView" />
-
-    <TextView
-        android:id="@+id/courseInstPhoneTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="32dp"
-        android:text="Phone Number:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseInstNameTextView" />
-
-    <TextView
-        android:id="@+id/instInfoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Instructor Info"
-        android:textSize="18sp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        tools:layout_editor_absoluteY="354dp">
 
-    <TextView
-        android:id="@+id/courseTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/courseDetailTitle"
-        app:layout_constraintEnd_toStartOf="@+id/courseDetailTitle"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/courseDetailTitle"
-        app:layout_constraintVertical_bias="0.416" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/courseDetailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:ems="10"
-        android:hint="@string/title_of_course"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/courseTitleTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/courseInstEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/instructor_email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/courseInstEmailTextView"
+                app:layout_constraintEnd_toEndOf="@+id/courseStatusSpinner"
+                app:layout_constraintTop_toTopOf="@+id/courseInstEmailTextView"
+                tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
-    <TextView
-        android:id="@+id/courseStartTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/start_date"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/courseTitleTextView"
-        app:layout_constraintTop_toBottomOf="@+id/courseTitleTextView" />
+            <EditText
+                android:id="@+id/courseInstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/instructor_name"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/courseInstNameTextView"
+                app:layout_constraintEnd_toEndOf="@+id/courseInstPhoneNumber"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/courseInstPhoneNumber"
+                app:layout_constraintTop_toTopOf="@+id/courseInstNameTextView"
+                app:layout_constraintVertical_bias="0.541"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
-    <EditText
-        android:id="@+id/courseStartDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:editable="false"
-        android:ems="10"
-        android:hint="@string/course_start_date"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/courseStartTextView"
-        app:layout_constraintEnd_toEndOf="@+id/courseDetailTitle"
-        app:layout_constraintTop_toTopOf="@+id/courseStartTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <EditText
+                android:id="@+id/courseInstPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/instructor_phone_number"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/courseInstPhoneTextView"
+                app:layout_constraintEnd_toEndOf="@+id/courseInstEmail"
+                app:layout_constraintTop_toTopOf="@+id/courseInstPhoneTextView"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
-    <TextView
-        android:id="@+id/courseEndTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/end_date"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/courseStartTextView"
-        app:layout_constraintTop_toBottomOf="@+id/courseStartTextView" />
+            <TextView
+                android:id="@+id/courseInstNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/name"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/courseInstEmailTextView"
+                app:layout_constraintTop_toBottomOf="@+id/instInfoTextView" />
 
-    <EditText
-        android:id="@+id/courseEndDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/course_end_date"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/courseEndTextView"
-        app:layout_constraintEnd_toEndOf="@+id/courseStartDate"
-        app:layout_constraintTop_toTopOf="@+id/courseEndTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/courseInstPhoneTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/phone_number"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/courseInstNameTextView"
+                app:layout_constraintStart_toStartOf="@+id/courseInstNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/courseInstNameTextView" />
 
-    <Button
-        android:id="@+id/saveCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="4dp"
-        android:text="Save Course"
-        app:layout_constraintEnd_toEndOf="@+id/courseEndDate"
-        app:layout_constraintTop_toBottomOf="@+id/courseEndDate" />
+            <TextView
+                android:id="@+id/courseInstEmailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/email"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/courseStatusTextView"
+                app:layout_constraintTop_toBottomOf="@+id/courseInstPhoneTextView" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/courseStatusTextView"
-        app:layout_constraintEnd_toEndOf="@+id/courseEndDate"
-        app:layout_constraintTop_toTopOf="@+id/courseStatusTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/instInfoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64sp"
+                android:text="@string/instructor_info"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseStatusSpinner" />
 
-    <TextView
-        android:id="@+id/courseStatusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Status:"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/courseEndTextView"
-        app:layout_constraintTop_toBottomOf="@+id/courseEndTextView" />
+            <TextView
+                android:id="@+id/courseTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/courseDetailTitle"
+                app:layout_constraintEnd_toStartOf="@+id/courseDetailTitle"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/courseDetailTitle"
+                app:layout_constraintVertical_bias="0.416" />
+
+            <EditText
+                android:id="@+id/courseDetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ems="10"
+                android:hint="@string/title_of_course"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/courseTitleTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/courseStartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/start_date"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/courseTitleTextView"
+                app:layout_constraintTop_toBottomOf="@+id/courseTitleTextView" />
+
+            <EditText
+                android:id="@+id/courseStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/course_start_date"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/courseStartTextView"
+                app:layout_constraintEnd_toEndOf="@+id/courseDetailTitle"
+                app:layout_constraintTop_toTopOf="@+id/courseStartTextView"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/courseEndTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/end_date"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/courseStartTextView"
+                app:layout_constraintTop_toBottomOf="@+id/courseStartTextView" />
+
+            <EditText
+                android:id="@+id/courseEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/course_end_date"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/courseEndTextView"
+                app:layout_constraintEnd_toEndOf="@+id/courseStartDate"
+                app:layout_constraintTop_toTopOf="@+id/courseEndTextView"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+            <Button
+                android:id="@+id/saveCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="4dp"
+                android:onClick="saveCourse"
+                android:text="@string/save_course"
+                app:layout_constraintEnd_toEndOf="@+id/courseEndDate"
+                app:layout_constraintTop_toBottomOf="@+id/courseNotes" />
+
+            <Spinner
+                android:id="@+id/courseStatusSpinner"
+                android:layout_width="211dp"
+                android:layout_height="48dp"
+                android:inputType="textNoSuggestions"
+                app:layout_constraintBottom_toBottomOf="@+id/courseStatusTextView"
+                app:layout_constraintEnd_toEndOf="@+id/courseEndDate"
+                app:layout_constraintTop_toTopOf="@+id/courseStatusTextView"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/courseStatusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/status"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/courseEndTextView"
+                app:layout_constraintTop_toBottomOf="@+id/courseEndTextView" />
+
+            <TextView
+                android:id="@+id/courseNotesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:text="@string/course_notes"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseInstEmail" />
+
+            <EditText
+                android:id="@+id/courseNotes"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/textbox_border"
+                android:ems="10"
+                android:gravity="start|top"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseNotesTextView"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

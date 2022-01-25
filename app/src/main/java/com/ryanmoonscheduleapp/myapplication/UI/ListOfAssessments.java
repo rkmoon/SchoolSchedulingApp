@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,11 +20,13 @@ public class ListOfAssessments extends AppCompatActivity {
 
     private Repository repository;
     private int courseID;
+    private int termID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_assessments);
         courseID = getIntent().getIntExtra("courseID", 0);
+        termID = getIntent().getIntExtra("termID", 0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
@@ -45,7 +48,15 @@ public class ListOfAssessments extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.editCourse:
+                Intent intent = new Intent(this, CourseDetail.class);
+                intent.putExtra("isEdit", true);
+                intent.putExtra("courseID", courseID);
+                intent.putExtra("termID", termID);
+
+                startActivity(intent);
         }
+
         return super.onOptionsItemSelected(item);
     }
     public boolean onCreateOptionsMenu(Menu menu){
