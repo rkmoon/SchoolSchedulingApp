@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.ryanmoonscheduleapp.myapplication.Entities.Course;
 import com.ryanmoonscheduleapp.myapplication.Entities.Term;
@@ -63,16 +65,25 @@ public class ListOfCourses extends AppCompatActivity {
                 intent.putExtra("termID", termID);
                 intent.putExtra("isEdit", true);
                 this.startActivity(intent);
+                return true;
             case R.id.deleteTerm:
                 Term termToDelete = repository.getTermByID(termID);
-                repository.delete(termToDelete);
-                this.finish();
+                int numberOfCourses = repository.getCoursesInTerm(termID).size();
+                if(numberOfCourses > 0){
+                    Toast.makeText(getApplicationContext(), "Cannot Delete Term that has Courses", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    repository.delete(termToDelete);
+                    this.finish();
+                }
+                return true;
             case R.id.deleteCoursesInTerm:
                 List<Course> coursesToDelete = repository.getCoursesInTerm(termID);
                 for(Course c: coursesToDelete){
                     repository.delete(c);
                 }
                 populateCourses();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -80,5 +91,13 @@ public class ListOfCourses extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_list_of_courses, menu);
         return true;
+    }
+
+    public void openCourseDetail(View view){
+        Intent intent = new Intent(this, CourseDetail.class);
+        intent.putExtra("isEdit", false);
+        intent.putExtra("termID", termID);
+        startActivity(intent);
+
     }
 }

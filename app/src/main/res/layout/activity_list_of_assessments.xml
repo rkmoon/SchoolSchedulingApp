@@ -21,6 +21,7 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/add_assessment"
+        android:onClick="addAssessment"
         android:theme="@style/Theme.SchedulingApplication"
         android:tint="@color/white"
         android:tintMode="src_in"

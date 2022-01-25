@@ -24,6 +24,7 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="@string/add_course"
+        android:onClick="openCourseDetail"
         android:theme="@style/Theme.SchedulingApplication"
         android:tint="@color/white"
         android:tintMode="src_in"

@@ -11,8 +11,19 @@ import java.util.Date;
 public class Assessment {
 
     public enum Type{
-        OBJECTIVE,
-        PERFORMANCE
+        OBJECTIVE("Objective"),
+        PERFORMANCE("Performance");
+
+        String assessmentType;
+
+        Type(String assessmentType){
+            this.assessmentType = assessmentType;
+        }
+
+        @Override
+        public String toString(){
+            return assessmentType;
+        }
     }
     @PrimaryKey(autoGenerate = true)
     private int assessmentID;
@@ -22,11 +33,12 @@ public class Assessment {
     private Date endDate;
     private Type type;
 
-    public Assessment(String title, Date startDate, Date endDate, Type type) {
+    public Assessment(String title, Date startDate, Date endDate, Type type, int courseID) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.type = type;
+        this.courseID = courseID;
     }
 
     public void setAssessmentID(int assessmentID) {

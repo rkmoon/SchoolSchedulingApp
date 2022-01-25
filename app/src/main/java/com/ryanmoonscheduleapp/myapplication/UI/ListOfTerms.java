@@ -52,9 +52,6 @@ public class ListOfTerms extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
-
-
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -64,10 +61,6 @@ public class ListOfTerms extends AppCompatActivity {
         return true;
     }
 
-    public void enterCoursesList(View view){
-        Intent intent = new Intent(ListOfTerms.this, ListOfCourses.class);
-        startActivity(intent);
-    }
 
     public void createTerm(View view){
         Intent intent = new Intent(ListOfTerms.this, TermDetail.class);

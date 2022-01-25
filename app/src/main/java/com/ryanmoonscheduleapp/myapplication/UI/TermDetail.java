@@ -54,13 +54,13 @@ public class TermDetail extends AppCompatActivity {
             startDate.set(Calendar.YEAR, year);
             startDate.set(Calendar.MONTH, monthOfYear);
             startDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabels();
+
         };
         endDatePicker = (view, year, monthOfYear, dayOfMonth) -> {
             endDate.set(Calendar.YEAR, year);
             endDate.set(Calendar.MONTH, monthOfYear);
             endDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabels();
+
         };
 
         termStartDate.setOnClickListener(v -> new DatePickerDialog(TermDetail.this, startDatePicker,
@@ -70,6 +70,7 @@ public class TermDetail extends AppCompatActivity {
         termEndDate.setOnClickListener(v -> new DatePickerDialog(TermDetail.this, endDatePicker,
                 endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH),
                 endDate.get(Calendar.DAY_OF_MONTH)).show());
+        updateLabels();
 
     }
 

@@ -3,7 +3,7 @@
 
     <group >
         <item
-            android:id="@+id/refreshTerm"
-            android:title="@string/refresh" />
+            android:id="@+id/deleteAllTerms"
+            android:title="@string/delete_all_terms" />
     </group>
 </menu>

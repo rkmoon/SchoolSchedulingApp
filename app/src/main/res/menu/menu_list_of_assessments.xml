@@ -3,12 +3,18 @@
 
     <group>
         <item
+            android:id="@+id/shareCourseNotes"
+            android:title="Share Course Notes" />
+        <item
             android:id="@+id/editCourse"
             android:title="@string/edit_course" />
+        <item
+            android:id="@+id/deleteCourse"
+            android:title="@string/delete_course" />
     </group>
     <group >
         <item
-            android:id="@+id/assessmentRefresh"
-            android:title="@string/refresh" />
+            android:id="@+id/deleteAllAssessments"
+            android:title="@string/delete_all_assessments_in_course" />
     </group>
 </menu>

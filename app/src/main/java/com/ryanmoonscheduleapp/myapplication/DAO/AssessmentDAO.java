@@ -25,4 +25,10 @@ public interface AssessmentDAO {
 
     @Query("SELECT * FROM ASSESSMENTS ORDER BY assessmentID ASC")
     List<Assessment> getAllAssessments();
+
+    @Query("SELECT * FROM ASSESSMENTS WHERE courseID = :courseID")
+    List<Assessment> getAssessmentsInCourse(int courseID);
+
+    @Query("SELECT * FROM ASSESSMENTS WHERE assessmentID = :assessmentID")
+    Assessment getAssessmentByID(int assessmentID);
 }

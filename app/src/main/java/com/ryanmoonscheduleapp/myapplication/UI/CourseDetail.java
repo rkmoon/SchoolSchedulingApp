@@ -25,7 +25,6 @@ import java.util.Locale;
 public class CourseDetail extends AppCompatActivity {
 
     private boolean isEdit;
-    private int courseID;
     private int termID;
     private Course courseToEdit;
     private Repository repository;
@@ -48,11 +47,14 @@ public class CourseDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         repository = new Repository(getApplication());
         isEdit = getIntent().getBooleanExtra("isEdit", false);
         termID = getIntent().getIntExtra("termID", 0);
+
         linkFields();
-        if(isEdit){
+        if (isEdit) {
             courseToEdit = repository.getCourseByID(getIntent().getIntExtra("courseID", 0));
             setInitialInformation();
         }
@@ -60,14 +62,12 @@ public class CourseDetail extends AppCompatActivity {
             startDate.set(Calendar.YEAR, year);
             startDate.set(Calendar.MONTH, monthOfYear);
             startDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabels();
         };
 
         endDatePicker = (view, year, monthOfYear, dayOfMonth) -> {
             endDate.set(Calendar.YEAR, year);
             endDate.set(Calendar.MONTH, monthOfYear);
             endDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabels();
         };
 
         courseStartDate.setOnClickListener(v -> new DatePickerDialog(CourseDetail.this, startDatePicker,
@@ -77,9 +77,10 @@ public class CourseDetail extends AppCompatActivity {
         courseEndDate.setOnClickListener(v -> new DatePickerDialog(CourseDetail.this, endDatePicker,
                 endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH),
                 endDate.get(Calendar.DAY_OF_MONTH)).show());
+        updateLabels();
     }
 
-    private void setInitialInformation(){
+    private void setInitialInformation() {
         courseName.setText(courseToEdit.getTitle());
         statusSpinner.setSelection(getIndexOfSpinner(courseToEdit.getStatus()));
         startDate.setTime(courseToEdit.getStartDate());
@@ -92,8 +93,7 @@ public class CourseDetail extends AppCompatActivity {
     }
 
 
-
-    private void linkFields(){
+    private void linkFields() {
         courseName = findViewById(R.id.courseDetailTitle);
         courseStartDate = findViewById(R.id.courseStartDate);
         courseEndDate = findViewById(R.id.courseEndDate);
@@ -107,10 +107,10 @@ public class CourseDetail extends AppCompatActivity {
 
     }
 
-        private void updateLabels() {
-            courseStartDate.setText(sdf.format(startDate.getTime()));
-            courseEndDate.setText(sdf.format(endDate.getTime()));
-        }
+    private void updateLabels() {
+        courseStartDate.setText(sdf.format(startDate.getTime()));
+        courseEndDate.setText(sdf.format(endDate.getTime()));
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -121,10 +121,10 @@ public class CourseDetail extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private int getIndexOfSpinner(Course.Status status){
+    private int getIndexOfSpinner(Course.Status status) {
         int index;
-        for(index = 0; index<statusSpinner.getCount(); index++){
-            if (statusSpinner.getItemAtPosition(index) == status){
+        for (index = 0; index < statusSpinner.getCount(); index++) {
+            if (statusSpinner.getItemAtPosition(index) == status) {
                 return index;
             }
         }
@@ -137,21 +137,22 @@ public class CourseDetail extends AppCompatActivity {
         }
     }*/
 
-    public void saveCourse(View view){
-        if(TextUtils.isEmpty(courseName.getText().toString()) || TextUtils.isEmpty(courseStartDate.getText().toString())
-        || TextUtils.isEmpty(courseEndDate.getText().toString())){
-            Toast.makeText(getApplicationContext(), "Please fill in Course Fields", Toast.LENGTH_SHORT);
-        }else{
+    public void saveCourse(View view) {
+        if (TextUtils.isEmpty(courseName.getText().toString()) || TextUtils.isEmpty(courseStartDate.getText().toString())
+                || TextUtils.isEmpty(courseEndDate.getText().toString())) {
+            Toast.makeText(getApplicationContext(), "Please fill in Course Fields", Toast.LENGTH_SHORT).show();
+        }
+        else {
             Course course = new Course(courseName.getText().toString(), Date.valueOf(dateFormat.format(startDate.getTime())),
-                    Date.valueOf(dateFormat.format(endDate.getTime())), (Course.Status)statusSpinner.getSelectedItem(),
+                    Date.valueOf(dateFormat.format(endDate.getTime())), (Course.Status) statusSpinner.getSelectedItem(),
                     instName.getText().toString(), instPhone.getText().toString(), instEmail.getText().toString(), termID,
                     courseNotes.getText().toString());
 
-            if(isEdit){
+            if (isEdit) {
                 course.setCourseID(courseToEdit.getCourseID());
                 repository.update(course);
             }
-            else{
+            else {
                 repository.insert(course);
             }
             this.finish();

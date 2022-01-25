@@ -6,4 +6,122 @@
     android:layout_height="match_parent"
     tools:context=".UI.AssessmentDetail">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/assessmentTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/assessmentDetailTitle"
+                app:layout_constraintEnd_toStartOf="@+id/assessmentDetailTitle"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/assessmentDetailTitle"
+                app:layout_constraintVertical_bias="0.416" />
+
+            <EditText
+                android:id="@+id/assessmentDetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ems="10"
+                android:hint="@string/title_of_assessment"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/assessmentTitleTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/assessmentStartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/start_date"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentTitleTextView"
+                app:layout_constraintTop_toBottomOf="@+id/assessmentTitleTextView" />
+
+            <EditText
+                android:id="@+id/assessmentStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/assessment_start_date"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/assessmentStartTextView"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentDetailTitle"
+                app:layout_constraintTop_toTopOf="@+id/assessmentStartTextView"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/assessmentEndTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/end_date"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentStartTextView"
+                app:layout_constraintTop_toBottomOf="@+id/assessmentStartTextView" />
+
+            <EditText
+                android:id="@+id/assessmentEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/assessment_end_date"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/assessmentEndTextView"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentStartDate"
+                app:layout_constraintTop_toTopOf="@+id/assessmentEndTextView"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+            <Button
+                android:id="@+id/saveAssessment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="12dp"
+                android:onClick="saveAssessment"
+                android:text="@string/save_assessment"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentEndDate"
+                app:layout_constraintTop_toBottomOf="@+id/assessmentTypeSpinner" />
+
+            <Spinner
+                android:id="@+id/assessmentTypeSpinner"
+                android:layout_width="211dp"
+                android:layout_height="48dp"
+                android:inputType="textNoSuggestions"
+                app:layout_constraintBottom_toBottomOf="@+id/assessmentTypeTextView"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentEndDate"
+                app:layout_constraintTop_toTopOf="@+id/assessmentTypeTextView"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/assessmentTypeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/type"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/assessmentEndTextView"
+                app:layout_constraintTop_toBottomOf="@+id/assessmentEndTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
