@@ -2,7 +2,11 @@ package com.ryanmoonscheduleapp.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -58,12 +62,14 @@ public class AssessmentDetail extends AppCompatActivity {
             startDate.set(Calendar.YEAR, year);
             startDate.set(Calendar.MONTH, monthOfYear);
             startDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabels();
         };
 
         endDatePicker = (view, year, monthOfYear, dayOfMonth) -> {
             endDate.set(Calendar.YEAR, year);
             endDate.set(Calendar.MONTH, monthOfYear);
             endDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabels();
         };
 
         assessmentStartDate.setOnClickListener(v -> new DatePickerDialog(AssessmentDetail.this, startDatePicker,
@@ -112,6 +118,7 @@ public class AssessmentDetail extends AppCompatActivity {
             else{
                 repository.insert(assessment);
             }
+            setNotifications();
             this.finish();
         }
     }
@@ -133,5 +140,22 @@ public class AssessmentDetail extends AppCompatActivity {
             }
         }
         return 0;
+    }
+
+    private void setNotifications(){
+        Date dStartDate = Date.valueOf(dateFormat.format(startDate.getTime()));
+        Date dEndDate = Date.valueOf(dateFormat.format(endDate.getTime()));
+        long startTrigger = dStartDate.getTime();
+        long endTrigger = dEndDate.getTime();
+        Intent startIntent = new Intent(AssessmentDetail.this, Receiver.class);
+        Intent endIntent = new Intent(AssessmentDetail.this, Receiver.class);
+        startIntent.putExtra("key", "Assessment " + assessmentTitle.getText().toString() + " starts today.");
+        endIntent.putExtra("key", "Assessment " + assessmentTitle.getText().toString() + " ends today.");
+        PendingIntent startSender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, startIntent, 0);
+        PendingIntent endSender = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, endIntent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, startTrigger, startSender);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, endSender);
+
     }
 }

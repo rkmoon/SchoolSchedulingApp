@@ -2,7 +2,11 @@ package com.ryanmoonscheduleapp.myapplication.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -17,8 +21,10 @@ import com.ryanmoonscheduleapp.myapplication.Entities.Course;
 import com.ryanmoonscheduleapp.myapplication.R;
 import com.ryanmoonscheduleapp.myapplication.database.Repository;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -62,12 +68,14 @@ public class CourseDetail extends AppCompatActivity {
             startDate.set(Calendar.YEAR, year);
             startDate.set(Calendar.MONTH, monthOfYear);
             startDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabels();
         };
 
         endDatePicker = (view, year, monthOfYear, dayOfMonth) -> {
             endDate.set(Calendar.YEAR, year);
             endDate.set(Calendar.MONTH, monthOfYear);
             endDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabels();
         };
 
         courseStartDate.setOnClickListener(v -> new DatePickerDialog(CourseDetail.this, startDatePicker,
@@ -155,8 +163,26 @@ public class CourseDetail extends AppCompatActivity {
             else {
                 repository.insert(course);
             }
+            setNotifications();
             this.finish();
         }
+
+    }
+
+    private void setNotifications(){
+        Date dStartDate = Date.valueOf(dateFormat.format(startDate.getTime()));
+        Date dEndDate = Date.valueOf(dateFormat.format(endDate.getTime()));
+        long startTrigger = dStartDate.getTime();
+        long endTrigger = dEndDate.getTime();
+        Intent startIntent = new Intent(CourseDetail.this, Receiver.class);
+        Intent endIntent = new Intent(CourseDetail.this, Receiver.class);
+        startIntent.putExtra("key", "Course " + courseName.getText().toString() + " starts today.");
+        endIntent.putExtra("key", "Course " + courseName.getText().toString() + " ends today.");
+        PendingIntent startSender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, startIntent, 0);
+        PendingIntent endSender = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, endIntent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, startTrigger, startSender);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, endTrigger, endSender);
 
     }
 }

@@ -3,6 +3,18 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Ryan\\Documents\\Android Keystore\\keystore.jks')
+            storePassword 'ryanmoon123'
+        }
+        release {
+            storeFile file('C:\\Users\\Ryan\\Documents\\Android Keystore\\keystore.jks')
+            storePassword 'ryanmoon123'
+            keyAlias 'MyAndroidKey'
+            keyPassword 'ryanmoon123'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -13,6 +25,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
